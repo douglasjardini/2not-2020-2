@@ -85,7 +85,7 @@ let estado9 = {
     populacao: 14812617
 }
 
-//estadosNe.push(estado1)
+estadosNe.push(estado1)
 estadosNe.push(estado2)
 estadosNe.push(estado3)
 estadosNe.push(estado4)
