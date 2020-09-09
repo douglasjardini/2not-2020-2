@@ -39,24 +39,33 @@
             alert('ERRO: Pelo menos um dos números informados é inválido')            
             temErro = true
         }
-        //calculos
-        else if(oper == '+') {
-            res = num1 + num2
-        }
-        else if(oper == '-') {
-            res = num1 - num2
-        }
-        else if(oper == '*' || oper == 'X' || oper == 'x') {
-            res = num1 * num2        
-        }
-        else if(oper == '/' || oper == ':') {
-            res = num1 / num2        
-        }
         else {
-            alert('ERRO: O operador informado é inválido!')
-            temErro = true
-        }
+            switch(oper) {
+                case '+':
+                    res = num1 + num2
+                    break  //o break pede faz o loop sair do switchcase quando encontra o resultado esperado
 
+                case '-':
+                    res = num1 + num2
+                    break
+
+                case 'X':   //case vazio
+                case 'x':   //case vazio
+                case '*':
+                    res = num1 * num2
+                    break
+
+                case '/':   //case vazio
+                case ':':
+                    res = num1 / num2
+                    break
+
+                default:    //Se não entrar em nenhum case
+                    alert('ERRO: Operador informado é inválido!')
+                    temErro = true
+            }
+        }
+        
         if(!temErro) {
             //document.write('O resultado da operação: ' + num1 + ' ' + oper + ' ' + num2 + ' ' é igual a ' ' + res + '.')
             
