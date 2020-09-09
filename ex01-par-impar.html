@@ -16,15 +16,22 @@
             prompt(). Determine se o número digitado é par
             ou ímpar e informe ao usuário usando alert().
         */
-        let num = prompt('Informe um número inteiro:')
-        let resto = num / 2;
-        if (resto % 2) {
+
+        //prompt() sempre recolhe respostas do tipo string
+
+        //Por isso, vamos *tentar* converter a entrada do usuário
+        //em um número inteiro, usando parseInt
+        let num = parseInt(prompt('Informe um número inteiro:'))
+        
+        if(isNaN(num)) {
+            alert('ERRO: O valor informado não é um ineteiro válido')
+        }
+        else if (num % 2 == 0) {
             alert('O numero digitado é PAR!')
         }
-       // else if {
-         //   alert('O numero digitado é IMPAR!')
-        //}
-
+        else {
+            alert('O numero digitado é IMPAR!')
+        }
         
     </script>
 </head>
