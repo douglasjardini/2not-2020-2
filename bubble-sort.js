@@ -1,12 +1,10 @@
 /*
-    Algoritmo de ordenação Bubble Sort
 
-    Estrategia:
-    Percorrer o vetor de dados, comparando elementos adjacentes
-    e promovendo a troca quando o sucessor é maior que o antecessor.
+    Adaptando o algoritmo Bubble sort para operar com vetor de objetos
 
-    O percurso no vetor é feito tantas vezes quando necessário, até
-    que nenhuma troca seja efetuada no percurso
+    1) Acrescentar um novo parâmetro, que vai corresponder a função de
+    comparação
+
 */
 
 function bubbleSort(vetor) {
