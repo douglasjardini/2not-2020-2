@@ -10,6 +10,7 @@
     <p>Isto é um parágrafo</p>
     <ul>
         <li>Primeiro item</li>
+        <li>id=intrusoIntruso</li>
         <li>Segundo item</li>
         <li>Terceiro item</li>
     </ul>    
@@ -44,6 +45,12 @@
     //Em JavaScript, o primeiro elemento é o de índice 0(zero)
     itens[1].innerHTML = 'SEGUNDO ITEM ALTERADO'
 
+    //Forma tradicional
+    const itens2 = document.getElementsByTagName('li')
+    itens2[2].innerHTML = 'TERCEIRO ITEM ALTERADO'
+
+    //Capturando um elemento por ID da forma antiga
+    const elemIntruso = document.getElementByID('Intruso')
 
     </script>
 </body>
