@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>modelo de documento HTML</title>
+    <script>
+    //'use strict' impede que variáveis sejam declaradas
+    //sem o uso de let, var ou const
+    //Inicializar variaveis diretamente é má prática de programação
+    'use strict'
+    
+    /*
+    Faça um loop for para escrever no documento, com document.write(), apenas os
+    quilômetros nos quais haverá lombofaixa, no sentido Franca – São Paulo, lembrando
+    que o km 1 fica em São Paulo.
+    */
+    for(let km = 400; km >= 1; km--) {
+        if(km % 29 == 0) {
+            document.write(`Lombofaixa no km ${km}<br>`)
+        }
+    }
+    
+    /* ABORDAGEM ALTERNATIVA QUE TAMBÉM FOI CONSIDERADA NA CORREÇÃO
+    for(let km = 400; km >= 1; -= 29) {
+        document.write(`Lombofaixa no km ${km}<br>`)
+    }
+    */
+
+    /*
+    Em seguida, peça para o usuário informar um quilômetro entre 1 e 400. Faça a
+    verificação se o usuário realmente informou um número inteiro e se o número
+    informado está na faixa esperada usando do..while.
+    */
+    let quilometro
+    do {
+        quilometro = parseInt(prompt('Informe um quilometro entre 1 e 400:'))
+    } while(isNaN(quilometro) || quilometro < 1 || quilometro > 400)
+
+
+    /*
+    Se o quilômetro especificado for válido, use uma estrutura switch..case
+    para informar ao usuário se existe algo “francano” no quilômetro em questão, conforme
+    dados do quadro amarelo acima. Caso não haja nenhuma francanice ali, exiba a mensagem
+    'Vapo, tem nada aqui não. Segue reto toda vida, meu fii.'.
+    */
+    let msg
+    switch(quilometro) {
+        case 92:
+        case 177:
+        case 291:
+        case 388:
+            msg = 'Megaloja do Magazine Luiza!'
+            break
+
+        case 153:
+        case 356:
+            msg = 'Drive-thru dos Calçados Rafarillo!'
+            break
+        
+        case 187:
+            msg = 'Posto de recarga da Viação São José!'
+            break
+        
+        case 210:
+            msg = 'Filial da Padaria Estrela'
+            break
+        
+        case 314:
+            msg = 'Fábrica do Jubileu do Amendoin'
+            break
+        
+        case 367:
+            msg = 'Franca Aquaparque Unidade II'
+            break
+
+        default
+            msg = 'Vapo, tem nada aqui não. Segue reto toda vida, meu fii.'
+
+    }
+    alert(msg)
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

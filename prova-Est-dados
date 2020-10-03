@@ -1,0 +1,15 @@
+const x = (a, d) => {
+   const y = (a, b) => {
+       let c = b
+       for(let e = b + 1; e < a.length; e++) {
+           if(! d(a[e], a[c])) c = e
+       }
+       return c
+   }
+   for(let f = 0; f < a.length - 1; f++) {
+       let g = y(a, f + 1)
+       if(d(a[f], a[g])) {
+           [a[g], a[f]] = [a[f], a[g]]
+       }
+   }
+}
