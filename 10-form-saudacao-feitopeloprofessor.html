@@ -6,10 +6,10 @@
     <title>Modelo de documento HTML</title>
     <style>
         label {
-            /* Forçar o modo de exibição em bloco*/
+            /* Forçar o modo de exibição em bloco */
             display: block;
         }
-        fieldset label { /*Tirar a regra de exibição em bloco para determinada situação*/
+        fieldset label {
             display: inline;
         }
         fieldset {
@@ -21,7 +21,7 @@
             margin-bottom: 15px;
         }
         /*div {
-            border: 1px dotted red; // para verificar as divisões da 'div'
+            border: 1px dotted red;
         }*/
     </style>
 </head>
@@ -48,7 +48,7 @@
             <option>Vossa Senhoria</option>
             <option>Senhor/a</option>
             <option>Cremosíssimo/a</option>
-        </select>
+        </select>   
     </div>
 
     <fieldset>
@@ -81,18 +81,18 @@
     </div>
 
     <script>
-        //'use strict' impede que variáveis sejam declaradas
-        //sem o uso de let, var ou const
-        //Inicializar variaveis diretamente é má prática de programação
-        //Programação
+        // 'use strict' impede que variáveis sejam declaradas
+        // sem o uso de let, var ou const
+        // Inicializar variáveis diretamente é má prática de
+        // programação
         'use strict'
-
-        /* Passo 1: Captura dos elementos HTML */
+        
+        /* PASSO 1: captura dos elementos HTML */
 
         const elPrimeiroNome = document.getElementById('primeiro-nome')
         const elSobrenome = document.getElementById('sobrenome')
         const elFormaTratamento = document.getElementById('forma-tratamento')
-    
+        
         const elMasculino = document.querySelector('#masculino')
         const elFeminino = document.querySelector('#feminino')
         const elHoraDia = document.querySelector('#hora-dia')
@@ -101,15 +101,15 @@
         const elSaudacao = document.querySelector('#saudacao')
         const elEnviar = document.querySelector('#enviar')
 
-        /* Passo 2: Validação da entrada de usuário */
+        /* PASSO 2: validação da entrada de usuário */
         function validar() {
 
             let valido = true
-
+            
             // trim(): retira espaços em branco no início e no final de uma string
             if(elPrimeiroNome.value.trim() == '') {
                 alert('O primeiro nome deve ser informado.')
-                elPrimeiroNome.focus() // 'foccus' - Coloca o foco (cursor) no controle
+                elPrimeiroNome.focus() // Coloca o foco no controle
                 valido = false
             }
             else if(elSobrenome.value.trim() == '') {
@@ -123,25 +123,25 @@
                 valido = false
             }
             else if(elHoraDia.value.trim() == '' || elHoraDia.value < 0 || elHoraDia.value > 23) {
-                alert('Informe uma hora dia válida.')
+                alert('Informe uma hora do dia válida.')
                 elHoraDia.focus()
                 valido = false
             }
             else if(!(elAlert.checked || elDocument.checked)) {
-                alert('Pelo menos uma forma de exibição deve ser marcada.')
+                alert('Pelo menos uma uma forma de exibição deve ser marcada.')
                 elAlert.focus()
                 valido = false
             }
-
+            
             return valido
-        }    
+        }
 
         function montarSaudacao() {
             if(validar()) {
                 let saudacao = ''
 
                 if(elHoraDia.value < 12) {
-                    saudacao = 'Bom dia. '
+                    saudacao = 'Bom dia, '
                 }
                 else if(elHoraDia.value < 18) {
                     saudacao = 'Boa tarde, '
@@ -188,22 +188,22 @@
                         else {
                             saudacao += 'Cremosíssimo '
                         }
-            }
+                }
 
-            saudacao += elPrimeiroNome.value + '' + elSobrenome.value
-            saudacao += ', como posso ser útil?'
+                saudacao += elPrimeiroNome.value + ' ' + elSobrenome.value
+                saudacao += ', como posso ser útil?'
 
-            if(elAlert.checked) {
-                alert(saudacao)
-            }
-            if(elDocument.checked) {
-                elSaudacao.innerText = saudacao
-            }
+                if(elAlert.checked) {
+                    alert(saudacao)
+                }
+                if(elDocument.checked) {
+                    elSaudacao.innerText = saudacao
+                }
 
+            }
         }
-    }
 
-    elEnviar.addEventListener('click', montarSaudacao)
+        elEnviar.addEventListener('click', montarSaudacao)
     </script>
 </body>
 </html>
