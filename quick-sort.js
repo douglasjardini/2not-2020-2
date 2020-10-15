@@ -1,6 +1,6 @@
 let passadas = 0, comparacoes = 0, trocas = 0
 function quickSort(vetor, inicio = 0, fim = vetor.length -1) {
-    //console.log({vetor, inicio, fim})
+    console.log({vetor, inicio, fim})
     if(fim > inicio) {  //Garante que haja, pelo menos, dois elementos para ordenar
         passadas++
         let posDiv = inicio - 1
