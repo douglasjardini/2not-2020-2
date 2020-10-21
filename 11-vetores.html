@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>modelo de documento HTML</title>
+    <script>
+    //'use strict' impede que variáveis sejam declaradas
+    //sem o uso de let, var ou const
+    //Inicializar variaveis diretamente é má prática de programação
+    'use strict'
+
+    // Criando um vetor
+    let vetor1 = []    // Forma moderna
+    let vetor2 = Array()    // Forma tradicional
+
+    // Declarando e inicializando vetores com elementos
+    let carros = ['Fusca', 'Del Rey', 'Passat', 'Opala']
+    //let cores = Array('verde', 'laranja', 'branco', 'vermelho', 'amarelo', 'rosa')
+    let numeros = Array(2, 3, 5, 7, 11, 13, 17, 19)
+
+    // Vetor de tipos misturados
+    let mistura = ['João das Couves', 63, false, null, undefined]
+
+    let frutas = []
+
+    /* push(): Insere novos elementos no FINAL do vetor */
+    frutas.push('laranja')
+    frutas.push('melancia')
+    frutas.push('maçã', 'limão')  // Pode inserir mais de um elemento de uma vez
+    console.log(frutas)
+
+    /* unshift(): insere novos elementos no INÍCIO do vetor */
+    frutas.unshift('jabuticaba')
+    frutas.unshift('amora')
+
+    /* pop(): retira UM elemento do FINAL do vetor */
+    çet retirado = frutas.pop() // Retira e coloca em uma variável
+    frutas.pop()   // Retira e perde
+    console.log('Retirado:', retirado)
+
+    /* shift(): retira UM elemento do INÍCIO do vetor*/
+    frutas.shift()  // Retria e perde
+    retirado = frutas.shift()   // Retira e coloca em uma variável
+    console.log('Retirado:', retirado)
+
+    /* splice(): insere elementos em uma posição específica do vetor
+        Parâmetros:
+        1º: a posição onde será feita a inserção
+        2º: quantos elementos serão APAGADOS (para inserções, deve ser (zero))
+        3º em diante: os elementos que serão inserídos
+    */
+    frutas.splice(2, 0, 'morango')
+    frutas.splice(1, 0, 'jaca', 'ameixa')
+    
+    /* Usando o splice() para fazer substituição */
+    frutas.splice(3, 1, 'manga') // Um elemento será apagado e substituído na posição 2
+
+    /* Splice(): Também retira elementos de uma posição específica do vetor
+        Parâmetros:
+        1º: posição onde será feita a retirada
+        2º: quantidade de elementos que serão removidos (>0)
+    */
+    retirado = splice(1, 1)
+    console.log('Retirado:', retirado)
+
+    // Colocando novos elementos para massa de teste
+    frutas.push('framboesa', 'caju', 'maracuja', 'mexerica')
+
+    // Retirado vários elementos de uma vez
+    retirado = frutas.splice(4,3) // A partir da posição 4, retire 3 elementos
+    console.log('Retirado:' retirado)
+
+    // Retirando o último elemento do vetor
+    frutas.splice(-1, 1) // Posição negativa conta as posições de trás para frente
+
+    /* length: retorna o número de elementos do vetor */
+    // Lembrar SEMPRE de terminar a palavra length com TH */
+    console.log('Numero de elementos:', frutas.length)  // Não pode ser lenght (GHT)
+
+    /* IndexOf: retorna a posição da primeira ocorrencia do valor especificado
+        ou -1 caso o valor */ 
+    console.log('ameixa: ', frutas.indexOf('ameixa'))
+    console.log('melão: ', frutas.indexOf('melão'))
+    console.log('morango: ', frutas.indexOf('ameixa'))
+
+
+    if(frutas.indexOf('jambo') >= 0) {
+        console.log('Existe')
+    }
+    else {
+        console.log('Não existe')
+    }
+
+    /* includes(): retorna se o valor de busca existe (true) ou não existe (false)
+        dentro do vetor */
+    console.log('ameixa: ', frutas.includes('ameixa'))
+    console.log('melão: ', frutas.includes('melão'))
+    console.log('morango: ', frutas.includes('morango'))
+
+
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -6,12 +6,23 @@
     <title>Calculadora</title>
 
     <style>
-        label {
+        label{
+            background: #fff;
             display: block;
         }
-        
-        div {
-            margin-bottom: 15px;
+
+        fieldset label{
+            display: inline;        
+        }  
+
+        fieldset{
+            border: 1px solid lightgray;
+            border-radius: 8px;
+            width: 200px;
+        }
+
+        div, fieldset{
+            margin-bottom: 15px
         }
         
     </style>
@@ -22,36 +33,33 @@
 
     <div>
         <label>Primeiro número</label>
-        <input type="number" id="primeiro-número" placeholder="Primeiro número">
+        <input type="number" id="primeiro-numero" placeholder="Primeiro numero">
     </div>
 
     <div>
         <label>Operação aritmética</label>
-        <select id="operador">
-            <option>(Selecione)</option>
-            <option>Adição</option>
-            <option>Subtração</option>
-            <option>Multiplicação</option>
-            <option>Divisão</option>
-            <option>Potenciação</option>
-            <option>Resto da divisão</option>
+        <select id="operacao">
+            <option disabled selected>(Selecione)</option>
+            <option value="soma">Adição</option>
+            <option value="subtracao">Subtração</option>
+            <option value="multiplicacao">Multiplicação</option>
+            <option value="divisao">Divisão</option>
+            <option value="potenciacao">Potenciação</option>
+            <option value="resto">Resto da divisão</option>
         </select>
     </div>
 
     <div>
         <label>Segundo número</label>
-        <input type="number" id="segundo-número" placeholder="Segundo número">
+        <input type="number" id="segundo-numero" placeholder="Segundo numero">
     </div>
-
-    <div id="operacao"></div>
 
     <div>
         <button id="calcular">Calcular</button>
     </div>
 
-    <div>
+    <div id="resultado">
         <label>Resultado da operação</label>
-        <input type="number" id="resultado-operacao" placeholder="Resultado">
     </div>
 
 
@@ -79,75 +87,85 @@
         */
         
         const elPrimeiroNumero = document.getElementById('primeiro-numero')
-        const elOperador = document.getElementById('operador')
+        const elOperacao = document.getElementById('operacao')
         const elSegundoNumero = document.getElementById('segundo-numero')
         
-        const elAlert = document.querySelector('#alert')
-        const elDocument = document.querySelector('#document')
-        const elResOperacao = document.querySelector('#resultado')
-        const elCalcular = document.querySelector('#calcular')        
-        
+        const elCalcular = document.querySelector('#calcular')             
+        const elResultado = document.querySelector('#resultado')
+           
         function validar() {
 
             let valido = true
 
-            if(elPrimeiroNumero.value.trim() == '') {
+            if(elPrimeiroNumero.value == 0) {
                 alert('O primeiro número deve ser informado.')
                 elPrimeiroNumero.focus()
                 valido = false
             }
             
-            if(elSegundoNumero.value.trim() == '') {
+            if(elSegundoNumero.value == 0) {
                 alert('O segundo número deve ser informado.')
                 elSegundoNumero.focus()
                 valido = false
             }
 
-            else if(elOperador.selectedIndex <= 0) {
+            else if(elOperacao.selectedIndex == 0) {
                 alert('Escolha um Operador.')
-                elOperador.focus()
+                elOperacao.focus()
                 valido = false
             }
 
             return valido
         }
 
-        function montarOperacao() {
+        function resultado() {
             if(validar()) {
 
-                let operacao = 0
+                let resultado = 0
                 
-                switch(elOperacao.selectedIndex) {
-                    case 1:
-                        operacao = parseInt(elPrimeiroNumero.value) + parseInt(elSegundoNumero.value)
+                switch(elOperacao.value) {
+                    case 'soma':
+                        resultado = Number(elPrimeiroNumero.value) + Number(elSegundoNumero.value)
+                        elResultado.innerText += `: ${resultado}`
+                    break
+                }                    
+                    case 'subtracao':
+                        resultado = Number(elPrimeiroNumero.value) - Number(elSegundoNumero.value)
+                        elResultado.innerText += `: ${resultado}`
                     break
                 }
-                    case 2:
-                        operacao = parseInt(elPrimeiroNumero.value) - parseInt(elSegundoNumero.value)
+                    case 'multiplicacao':
+                        resultado = Number(elPrimeiroNumero.value) * Number(elSegundoNumero.value)
+                        elResultado.innerText += `: ${resultado}`
                     break
                 }
-                    case 3:
-                        operacao = parseInt(elPrimeiroNumero.value) * parseInt(elSegundoNumero.value)
+                    case 'divisao':
+                        resultado = Number(elPrimeiroNumero.value) / Number(elSegundoNumero.value)
+                        elResultado.innerText += `: ${resultado}`
                     break
                 }        
-                    case 4:
-                        operacao = parseInt(elPrimeiroNumero.value) / parseInt(elSegundoNumero.value)
+                    case 'potenciacao':
+                        resultado = Number(elPrimeiroNumero.value) ** Number(elSegundoNumero.value)
+                        elResultado.innerText += `: ${resultado}`
                     break
                 }
-                    case 5:
-                        operacao = parseInt(elPrimeiroNumero.value) % parseInt(elSegundoNumero.value)
+                    case 'resto':
+                        resultado = Number(elPrimeiroNumero.value) % Number(elSegundoNumero.value)
+                        elResultado.innerText += `: ${resultado}`
                     break
                 }
             }
 
-            alert(elResOperacao) {
-                elResOperacao.innerText = `O resultado da operação é ${operacao}`
-            }
-            
+            /* PROFESSOR, EU NÃO CONSEGUI ASSOCIAR O CÁLCULO PARA APRESENTAR O RESULTADO NOS DOIS CÓDIGOS
+                TENTEI ATÉ A ULTIMA HORA ACHAR ONDE EU POSSA TER ERRADO.
+                SE PUDER FALAR SOBRE ESTA SITUAÇÃO, AGRADEÇO.
+            */
+
+
             }
         }
 
-        elCalcular.addEventListener('click', montarOperacao)
+        elCalcular.addEventListener('click', resultado)
 
     </script>
 

@@ -5,9 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
     <style>
-        div, fieldset {
-            margin-bottom: 15px;
-        }
+
+      label{
+          display: block;
+      }
+      
+      fieldset label{
+          display: inline;        
+      }  
+
+      fieldset{
+           border: 2px solid lightgray;
+           border-radius: 10px;
+           width: 200px;
+      }
+
+      div, fieldset{
+           margin-bottom: 15px
+          }
+        
     </style>
     
 <!--[if gte mso 9]><xml>
@@ -27,22 +43,21 @@
 
     <div>
         <label>Digite um caractere</label>
-        <input type="text" id="caractere" size="1">
+        <input type="text" id="caractere" placeholder="Ex. *">
     </div>
 
     <div>
         <label>Digite números inteiros de 1 a 100</label>
-        <input type="number" id="qtdecaracteres" min="0" max="100">
+        <input type="number" id="qtdecaracteres" placeholder="Exemplo 1 - 100">
     </div>
 
     <div>
-        <button id="gerarPadrao">Gerar Padrão</button>
+        <button type="button" id="gerarPadrao">Gerar Padrão</button>
     </div>
 
-    <div>
-        <label>Exibição do resultado</label>
-        <input type="text" id="resultado">
-    </div>
+    <div class="resultado">
+        <label >Exibição do resultado</label>
+</div>
 
     <script>
         // 'use strict' impede que variáveis sejam declaradas
@@ -82,26 +97,20 @@
         **********
         ***********
         */
-    
-    const elCaractere = document.getElementById('caractere')
-    const elQtdeCaracteres = document.getElementById('qtde-caracteres')
-    const elResultado = document.querySelector('#resultado')
-    const elAlert = document.querySelector('#alert')
-    const elDocument = document.querySelector('#document')
 
-    const elGerarPadrao = document.querySelector('#gerarpadrao')
-    const elEnviar = document.querySelector('#enviar')
+    const button = document.querySelector('#gerarPadrao')
+    const resultado = document.querySelector('.resultado')
 
     function validar() {
         let valido = true
 
-        if(elCaractere.value.trim() == '') {
+        if(elCaractere.value == '') {
             alert('Informe um caractere.')
             elCaractere.focus()
             valido = false
         }
 
-        else if(elQtdeCaracteres.value.trim() == '' || elQtdeCaracteres < 0 || elQtdeCaracteres.value >= 100) {
+        else if(elQtdeCaracteres.value == '' || elQtdeCaracteres < 0 || elQtdeCaracteres.value >= 100) {
             alert('Informe uma quantidade de caracteres válida.')
             elQtdeCaracteres.focus()
             valido = false
@@ -111,19 +120,28 @@
     
     }
 
-    function gerarPadrao() {
-        if(validar()) {
+            /* PROFESSOR, EU NÃO CONSEGUI ASSOCIAR O CÁLCULO PARA APRESENTAR O RESULTADO NOS DOIS CÓDIGOS
+                TENTEI ATÉ A ULTIMA HORA ACHAR ONDE EU POSSA TER ERRADO.
+                SE PUDER FALAR SOBRE ESTA SITUAÇÃO, AGRADEÇO.
+            */
+           
 
-        let resultado = ''
-            for(let i = 1; 1 <= elQtdeCaracteres; i + 1) {
-    }
+    button.addEventListener('click' , () => {
+        const elCaractere = document.querySelector('#caractere').value
+        const elQtdeCaracteres = document.querySelector('#qtdecaracteres').valueAsNumber
+        let linha = ''
 
-        resultado += elCaractere
-        document.write(elCaractere + 'br')
+        resultado.innerHTML = '<span>Resultado</span>'
+
+        for(let i = 0; i < elCaractere; i++) {
+          let p = document.createElement('p')
+
+          linha += elCaractere
+          p.innerHTML = linha 
+          
+          resultado.appendChild(p)
         }
-
-        elGerarPadrao.addEventListenner('click', gerarPadrao)
-    }
+      })
 
     </script>
 </body>
