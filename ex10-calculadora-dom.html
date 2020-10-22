@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,22 +7,11 @@
 
     <style>
         label{
-            background: #fff;
             display: block;
         }
 
-        fieldset label{
-            display: inline;        
-        }  
-
-        fieldset{
-            border: 1px solid lightgray;
-            border-radius: 8px;
-            width: 200px;
-        }
-
-        div, fieldset{
-            margin-bottom: 15px
+        div {
+            margin-bottom: 20px
         }
         
     </style>
@@ -33,35 +22,32 @@
 
     <div>
         <label>Primeiro número</label>
-        <input type="number" id="primeiro-numero" placeholder="Primeiro numero">
+        <input type="number" id="primeiro-numero" step="0.01">
     </div>
 
     <div>
         <label>Operação aritmética</label>
         <select id="operacao">
-            <option disabled selected>(Selecione)</option>
-            <option value="soma">Adição</option>
-            <option value="subtracao">Subtração</option>
-            <option value="multiplicacao">Multiplicação</option>
-            <option value="divisao">Divisão</option>
-            <option value="potenciacao">Potenciação</option>
-            <option value="resto">Resto da divisão</option>
+            <option>(Selecione)</option>
+            <option>Adição</option>
+            <option>Subtração</option>
+            <option>Multiplicação</option>
+            <option>Divisão</option>
+            <option>Potenciação</option>
+            <option>Resto da divisão</option>
         </select>
     </div>
 
     <div>
         <label>Segundo número</label>
-        <input type="number" id="segundo-numero" placeholder="Segundo numero">
+        <input type="number" id="segundo-numero" step="0.01">
     </div>
 
     <div>
         <button id="calcular">Calcular</button>
     </div>
 
-    <div id="resultado">
-        <label>Resultado da operação</label>
-    </div>
-
+    <div id="resultado"></div>
 
     <script>
         // 'use strict' impede que variáveis sejam declaradas
@@ -88,73 +74,72 @@
         
         const elPrimeiroNumero = document.getElementById('primeiro-numero')
         const elOperacao = document.getElementById('operacao')
-        const elSegundoNumero = document.getElementById('segundo-numero')
-        
+
+        const elSegundoNumero = document.querySelector('#segundo-numero')        
         const elCalcular = document.querySelector('#calcular')             
         const elResultado = document.querySelector('#resultado')
            
-        function validar() {
-
+        function efetuar() {
+            let valElPrimeiroNumero = parseFloat(elPrimeiroNumero) // poderia ter sido parseFloat() tb
+            let valElSegundoNumero = parseFloat(elSegundoNumero)
             let valido = true
 
-            if(elPrimeiroNumero.value == 0) {
+            if(isNaN(elPrimeiroNumero)) {
                 alert('O primeiro número deve ser informado.')
                 elPrimeiroNumero.focus()
                 valido = false
             }
             
-            if(elSegundoNumero.value == 0) {
+            else if(isNaN(elSegundoNumero)) {
                 alert('O segundo número deve ser informado.')
                 elSegundoNumero.focus()
                 valido = false
             }
 
-            else if(elOperacao.selectedIndex == 0) {
+            else if(elOperacao.selectedIndex <= 0) {
                 alert('Escolha um Operador.')
                 elOperacao.focus()
                 valido = false
             }
-
+            /*
             return valido
+            
         }
-
+        
         function resultado() {
-            if(validar()) {
+            */
+            if(valido) {
 
-                let resultado = 0
+                let result
                 
-                switch(elOperacao.value) {
-                    case 'soma':
-                        resultado = Number(elPrimeiroNumero.value) + Number(elSegundoNumero.value)
-                        elResultado.innerText += `: ${resultado}`
+                switch(elOperacao.selectedIndex) {
+                    case 1:
+                        result = elPrimeiroNumero + elSegundoNumero                        
                     break
                 }                    
-                    case 'subtracao':
-                        resultado = Number(elPrimeiroNumero.value) - Number(elSegundoNumero.value)
-                        elResultado.innerText += `: ${resultado}`
+                    case 2:
+                        result = elPrimeiroNumero - elSegundoNumero
                     break
                 }
-                    case 'multiplicacao':
-                        resultado = Number(elPrimeiroNumero.value) * Number(elSegundoNumero.value)
-                        elResultado.innerText += `: ${resultado}`
+                    case 3:
+                        result = elPrimeiroNumero * elSegundoNumero
                     break
                 }
-                    case 'divisao':
-                        resultado = Number(elPrimeiroNumero.value) / Number(elSegundoNumero.value)
-                        elResultado.innerText += `: ${resultado}`
+                    case 4:
+                        result = elPrimeiroNumero / elSegundoNumero
                     break
                 }        
-                    case 'potenciacao':
-                        resultado = Number(elPrimeiroNumero.value) ** Number(elSegundoNumero.value)
-                        elResultado.innerText += `: ${resultado}`
+                    case 5:
+                        result = elPrimeiroNumero ** elSegundoNumero
                     break
                 }
-                    case 'resto':
-                        resultado = Number(elPrimeiroNumero.value) % Number(elSegundoNumero.value)
-                        elResultado.innerText += `: ${resultado}`
+                    case 6:
+                        result = elPrimeiroNumero % elSegundoNumero
                     break
                 }
             }
+
+            elResultado.innerText = result.toLocaleString('pt-BR')
 
             /* PROFESSOR, EU NÃO CONSEGUI ASSOCIAR O CÁLCULO PARA APRESENTAR O RESULTADO NOS DOIS CÓDIGOS
                 TENTEI ATÉ A ULTIMA HORA ACHAR ONDE EU POSSA TER ERRADO.
@@ -165,7 +150,7 @@
             }
         }
 
-        elCalcular.addEventListener('click', resultado)
+        elCalcular.addEventListener('click', efetuar)
 
     </script>
 
