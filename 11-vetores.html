@@ -104,7 +104,43 @@
     else {
         console.log('Não existe')
     }
+
+    console.log(frutas)   
+    alert(frutas)               // Dá certo, mas não é esteticamente bonito
+    document.write(frutas)      // Dá certo, mas não é esteticamente bonito
+
+    /* slice(): "fatia" um vetor, gerando um outro vetor apenas com o
+        pedaço desejado
+        Parâmetros:
+        1º: posição inicial
+        2º: posição final
+    */
+    let parte = frutas.slice(1, 4)
+    console.log(frutas)
+    console.log(parte)
+
+    //Quando chamado com apenas um parâmetro, a fatia daquela posição
+    //até o final do vetor
+    let outraParte = frutas.slice(3)
+    console.log(outraParte)
+
+    // Acessando posições do vetor
+    // A fruta que está na terceira posição
+    console.log(frutas[2])
+
+    // A primeira fruta
+    console.log(frutas[0])
+
+    // A última fruta
+    console.log)frutas[frutas.length - 1]
     
+    console.log('--------------------------')
+
+    let i
+    for(i = 0 < frutas.length; i++) {
+        console.log(i, frutas[i])
+    }
+    console.log('Valor final de i:', i)
 
     </script>
 </head>

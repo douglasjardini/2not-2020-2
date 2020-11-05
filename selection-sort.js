@@ -1,7 +1,7 @@
 /*
     Função de comparação fnComp
     - Recebe dois valores para comparação
-    - Retrno
+    - Retorno
         - true se o PRIMEIRO valor for MAIOR que o segundo
         - false se for o contrario    
 */

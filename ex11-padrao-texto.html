@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,19 +10,9 @@
           display: block;
       }
       
-      fieldset label{
-          display: inline;        
-      }  
-
-      fieldset{
-           border: 2px solid lightgray;
-           border-radius: 10px;
-           width: 200px;
+      div {
+           margin-bottom: 20px;
       }
-
-      div, fieldset{
-           margin-bottom: 15px
-          }
         
     </style>
     
@@ -43,21 +33,19 @@
 
     <div>
         <label>Digite um caractere</label>
-        <input type="text" id="caractere" placeholder="Ex. *">
+        <input type="text" id="caractere" maxlength="1">
     </div>
 
     <div>
         <label>Digite números inteiros de 1 a 100</label>
-        <input type="number" id="qtdecaracteres" placeholder="Exemplo 1 - 100">
+        <input type="number" id="qtdecaracteres" min="1" max="100">
     </div>
+
+    <div id="resultado"></div>
 
     <div>
-        <button type="button" id="gerarPadrao">Gerar Padrão</button>
+        <button id="gerar">Gerar Padrão</button>
     </div>
-
-    <div class="resultado">
-        <label >Exibição do resultado</label>
-</div>
 
     <script>
         // 'use strict' impede que variáveis sejam declaradas
@@ -97,51 +85,44 @@
         **********
         ***********
         */
-
-    const button = document.querySelector('#gerarPadrao')
-    const resultado = document.querySelector('.resultado')
+    
+    const elCaractere = document.querySelector('#caractere')
+    const elQtdeCaracteres = document.querySelector('#qtdecaracteres')
+    const elResultado = document.querySelector('#resultado')
+    const elGerar = document.querySelector('#gerar')   
 
     function validar() {
-        let valido = true
 
-        if(elCaractere.value == '') {
+        let qtdecaracteres = parseInt(elQtdeCaracteres.value)
+        let caractere = elCaractere.value.trim()
+        let valido = true
+        
+        if(caractere == ''|| caractere.length > 1) {
             alert('Informe um caractere.')
             elCaractere.focus()
             valido = false
         }
 
-        else if(elQtdeCaracteres.value == '' || elQtdeCaracteres < 0 || elQtdeCaracteres.value >= 100) {
+        else if(isNaN(qtdecaracteres) || qtdecaracteres < 1 || qtdecaracteres >= 100 '' || elQtdeCaracteres < 0 || elQtdeCaracteres.value >= 100) {
             alert('Informe uma quantidade de caracteres válida.')
             elQtdeCaracteres.focus()
             valido = false
         }
-
-        return valido
-    
+            
     }
-
-            /* PROFESSOR, EU NÃO CONSEGUI ASSOCIAR O CÁLCULO PARA APRESENTAR O RESULTADO NOS DOIS CÓDIGOS
-                TENTEI ATÉ A ULTIMA HORA ACHAR ONDE EU POSSA TER ERRADO.
-                SE PUDER FALAR SOBRE ESTA SITUAÇÃO, AGRADEÇO.
-            */
-           
-
-    button.addEventListener('click' , () => {
-        const elCaractere = document.querySelector('#caractere').value
-        const elQtdeCaracteres = document.querySelector('#qtdecaracteres').valueAsNumber
-        let linha = ''
-
-        resultado.innerHTML = '<span>Resultado</span>'
-
-        for(let i = 0; i < elCaractere; i++) {
-          let p = document.createElement('p')
-
-          linha += elCaractere
-          p.innerHTML = linha 
           
-          resultado.appendChild(p)
+           if(valido) {
+
+            for(let i = 1; i <= elQtdeCaracteres; i++) {
+            padrao +=caractere.repeat(i) + '<br>'
+
+            elResultado.innerHTML = padrao
+
+            }
+      
         }
-      })
+
+        elGerar.addEventListener('click', validar)
 
     </script>
 </body>
