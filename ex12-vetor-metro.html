@@ -60,6 +60,66 @@
   
         */
 
+    // 1º parte
+    let estacao1 = []
+    estacao1.push('Santa Teresinha','Estação', 'Centro', 'Jardim Lima', 'Aeroporto I' )
+    /*  --- também pode ser escrito da forma abaixo
+    estacao1.push('Santa Teresinha')
+    estacao1.push('Estação')
+    estacao1.push('Centro')
+    estacao1.push('Jardim Lima')
+    estacao1.push('Aeroporto I')
+    */
+
+    // Loop for tradicional
+    for(let i = 0 < estacao1.length; i++) {
+        documente.write(estacao1[i] + '<br>')
+    }
+    // Traço tradicional
+    document.write('<hr>')
+
+    // 2º parte
+    estacao1.unshift('City Petrópolis')
+    estacao1.push('Aeroporto IV')
+
+    for(let estacao of estacao1) {
+        document.write(estacao + '<br>')
+    }
+    documente.write('<hr>')
+
+    // 3º parte
+    let posEstacao = estacao1.indexOf('Estação')
+    estacao1.splice(posEstacao, 0, 'Vila Imperador')
+
+    // Usando indexOf diretamente sem uso de variável auxiliar
+    estacao1.splice(estacao1.indexOf('Aeroporto I'), 0, 'Jardim Alvorada')
+
+    for(let i = estacao1. length - 1; > 0; i--) {
+        document.write(estacao1[i] + '<br>')
+    }
+    documente.write('<hr>')
+
+    // 4º parte
+    estacao1.splice(estacao1.indexOf('Centro'), 1, '9 de Julho', 'Champagnat')
+
+    for(let i = 0; i < estacao1.length; i++) {
+        document.write(estacao1[i] + '<br>')
+    }
+    documente.write('<hr>')
+
+    //5º parte
+    estacao1.pop()  // última estação
+    estacao1.pop()  // penúltima estação
+    
+    // Alternativa
+    // estacao1.splice(estacao1.length - 2) // Apaga a partir da posição encontrada
+
+    estacao1.splice(estacao1.indexOf('Santa Teresinha'), 1)
+
+    for(let estacao of estacao1) {
+        document.write(estacao + '<br>')
+    }
+    
     </script>
 </head>
 
