@@ -25,15 +25,34 @@
 
             Retorne o resultado.
         */
+
+        function efetuar(oper, ...nums) {
+            let res
+            if(oper) {   // Boleano, com valor true
+                let res = 1    // Elemento neutro da multiplicação
+                for(let n of nums) {    // O afgumento de resto é um vetor
+                    res *= n
+                }
+                return res
+            }
+            else {   // false
+                res = 0   // elemento neutro da adição
+                for(let n of nums) {
+                    res += n
+                }
+                return res
+            }
+        }
+
+        let mult1 = efetuar(true, 4, 8, 2, -1, 9, 3)
+        let mult2 = efetuar(true, 7, 2, 6)
+        document.write(`Multiplicação 1: ${mult1}; multiplicação 2: ${mult2}<br>`)
+
+        let soma1 = efetuar(false, 4, 8, 2, -1, 9, 3)
+        let soma2 = efetuar(false, 7, 2, 6)
+        document.write(`Soma 1: ${soma1}; soma 2: ${soma2}<br>`)
         
     </script>
-
-<!--[if gte mso 9]><xml>
-<mso:CustomDocumentProperties>
-<mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_SharedWithUsers msdt:dt="string">Estruturas de Dados-A-M-ANALISE E DESENV. DE SISTEMAS-109-20202 Members</mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_SharedWithUsers>
-<mso:SharedWithUsers msdt:dt="string">85;#Estruturas de Dados-A-M-ANALISE E DESENV. DE SISTEMAS-109-20202 Members</mso:SharedWithUsers>
-</mso:CustomDocumentProperties>
-</xml><![endif]-->
 </head>
 
 <body>
