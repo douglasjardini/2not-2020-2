@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acumulador</title>
+
+    <style>
+        * {
+            font-family: 'Candara', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+
+        html,
+        body {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            font-size: 12pt;
+            line-height: 18pt;
+            color: #444;
+        }
+
+        body {
+            background-color: indigo;
+            background-image: linear-gradient(slateblue 50%, indigo);
+            background-repeat: no-repeat;
+            padding: 0;
+        }
+
+        body>div {
+            background: whitesmoke;
+            margin: 3%;
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+        }
+
+        h1 {
+            font-size: 2rem;
+            text-align: center;
+            color: indigo;
+            text-shadow: 2px 2px 2px rgba(75, 0, 130, 0.5);
+
+        }
+
+        div>div {
+            padding: 10px;
+            width: 70%;
+            max-width: 90%;
+            min-width: 250px;
+            margin: 1% auto;
+            text-align: center;
+        }
+
+        div label {
+            display: block;
+        }
+
+        button {
+            font-size: 12pt;
+            padding: 8px;
+            border-radius: 8px;
+            color: white;
+            background-color: indigo;
+        }
+
+        p {
+            display: inline-block;
+            width: 30%;
+            margin: 0;
+        }
+
+        p span {
+            font-weight: bold;
+            color: indigo;
+        }
+
+        div div:last-of-type {
+            background-color: lavender;
+            border-radius: 12px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div>
+        <h1>Acumulador</h1>
+
+        <div>
+            <label>Informe um número</label>
+            <input id="num" type="number">
+        </div>
+
+        <div>
+            <button id="acumular">Acumular!</button>
+        </div>
+
+        <div>
+            <p>Quantidade: <span id="quant">0</span></p>
+            <p>Média: <span id="media">0</span></p>
+            <p>Soma: <span id="soma">0</span></p>
+        </div>
+    </div>
+
+    
+    <script>
+        // 'use strict' impede que variáveis sejam declaradas
+        // sem o uso de let, var ou const
+        // Inicializar variáveis diretamente é má prática de
+        // programação
+        'use strict'
+
+    const elNumInform = document.getElementById('num')
+    
+    const elAcumular = document.querySelector('#acumular')
+
+    const elQuantidade = document.querySelector('#quant')
+    const elMedia = document.querySelector('#media')
+    const elSoma = document.querySelector('#soma')
+    
+    function calcular() {
+    let vetor1(num) {
+        function soma(vetor1)
+        let soma = 0
+            for(let i = 0; i++) {
+            soma += vetor[i] 
+        }
+        return soma
+    }
+
+    let acumular = vetor1
+        function media(vetor1) {
+            let media = 0
+            let acum = 0
+                for(let i = 0; i++) {
+                acum += acum
+                media += vetor1[i] / acum
+            }
+            return media
+        }
+    
+        elQuantidade.innerText = acum.toLocaleString('pt-BR')
+        elMedia.innerText = media.toLocaleString('pt-BR')
+        elSoma.innerText = soma.toLocaleString('pt-BR')
+    }
+
+    elAcumular.addEventListener('click', acumular)
+
+
+    /*******************************************************************************************************************
+    CONSIDERAÇÕES
+
+    - Não coloquei validação no número digitado, pois já está declarado que o campo é um tipo 'Number'
+    - Declarei a busca dose elementos com id
+    - Tentei inserir as funções de acordo com o que consegui compreender nas aulas e trabalhos
+    - Ao inserir os dados para apresentar no formulário, não sei onde posso ter errado, mas não apresentou
+
+    - Ainda tenho dúvidas quando tento formular sozinho um código através de um enunciado. Já apresentei alguns trabalhos
+    acompanhado pela monitoria e alguns feitos sozinhos por mim, mas não acho que não concluí corretamente este código.
+
+    *********************************************************************************************************************/
+
+    </script>
+
+
+</body>
+
+</html>
